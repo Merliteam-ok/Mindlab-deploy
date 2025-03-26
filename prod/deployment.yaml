@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot-api
+  namespace: prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chatbot-api
+  template:
+    metadata:
+      labels:
+        app: chatbot-api
+    spec:
+      containers:
+      - name: chatbot-api
+        image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/my-k8s-cluster:chatbot-api-prod
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: ecr-secret
