@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: mi-nest-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: mi-nest-app
   template:
     metadata:
       labels:
-        app: nginx
+        app: mi-nest-app
     spec:
       containers:
-        - name: nginx
-          image: nginx:latest
+        - name: mi-nest-app
+          image: node:18-alpine # Será reemplazada en overlays
           ports:
-            - containerPort: 80
+            - containerPort: 3001

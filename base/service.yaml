@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: mi-nest-app
 spec:
   selector:
-    app: nginx
+    app: mi-nest-app
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 3001
