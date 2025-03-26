@@ -16,4 +16,4 @@ spec:
               service:
                 name: mi-nest-app
                 port:
-                  number: 80
+                  number: 3001
