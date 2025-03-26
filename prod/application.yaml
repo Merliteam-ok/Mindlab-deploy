@@ -4,7 +4,7 @@ metadata:
   name: my-app-prod
   namespace: argocd
 spec:
-  project: default
+  project: mindlab
   source:
     repoURL: 'https://github.com/Merliteam-ok/Mindlab-deploy.git'
     targetRevision: main
