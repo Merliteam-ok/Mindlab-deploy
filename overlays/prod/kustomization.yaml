@@ -1,6 +1,4 @@
 resources:
   - ../../base
-
-patchesStrategicMerge:
-  - patch-deployment.yaml
-  - patch-image-pull-secret.yaml
+  - deployment-nest.yaml
+  - deployment-react.yaml

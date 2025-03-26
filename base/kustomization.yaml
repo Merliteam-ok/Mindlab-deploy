@@ -1,4 +1,4 @@
 resources:
-  - deployment.yaml
-  - service.yaml
+  - service-nest.yaml
+  - service-react.yaml
   - ingress.yaml
