@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: mi-react-app
-          image: 123456789012.dkr.ecr.us-east-2.amazonaws.com/mi-react-app:latest
+          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab/ai-agents-manager/front-end
           ports:
-            - containerPort: 80
+            - containerPort: 3005

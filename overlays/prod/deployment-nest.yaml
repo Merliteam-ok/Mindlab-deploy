@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: mi-nest-app
-          image: 123456789012.dkr.ecr.us-east-2.amazonaws.com/mi-nest-app:latest
+          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab/ai-agents-manager/admin-api:latest
           ports:
             - containerPort: 3001
