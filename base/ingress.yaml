@@ -14,14 +14,6 @@ spec:
   rules:
     - host: app.mind-lab.ai
       http:
-        paths:
-          - path: /ssl-redirect
-            pathType: Prefix
-            backend:
-              service:
-                name: ssl-redirect
-                port:
-                  name: use-annotation
           - path: /
             pathType: Prefix
             backend:
