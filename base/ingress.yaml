@@ -21,5 +21,4 @@ spec:
               service:
                 name: mi-nest-app
                 port:
-                  number: 443  # 👈 Este número debe coincidir con el "port" del Service, NO con el containerPort
-
+                  number: 80
