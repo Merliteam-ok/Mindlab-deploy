@@ -5,7 +5,7 @@ metadata:
   namespace: prod
 spec:
   selector:
-    app: my-app
+    app: chatbot-api
   ports:
     - protocol: TCP
       port: 80           # El puerto en el que se expone el servicio
