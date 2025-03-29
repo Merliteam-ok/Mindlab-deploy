@@ -17,6 +17,6 @@ spec:
       - name: chatbot-api
         image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/my-k8s-cluster:chatbot-api-prod
         ports:
-        - containerPort: 8080
+        - containerPort: 3001
       imagePullSecrets:
       - name: ecr-secret

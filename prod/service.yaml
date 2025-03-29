@@ -8,6 +8,6 @@ spec:
     app: chatbot-api
   ports:
     - protocol: TCP
-      port: 80           # El puerto en el que se expone el servicio
-      targetPort: 8080   # El puerto donde tu aplicación escucha dentro del pod
-  type: LoadBalancer     # Para exponer el servicio externamente (AWS crea un ELB automáticamente)
+      port: 80 # El puerto en el que se expone el servicio
+      targetPort: 3001 # El puerto donde tu aplicación escucha dentro del pod
+  type: LoadBalancer # Para exponer el servicio externamente (AWS crea un ELB automáticamente)
