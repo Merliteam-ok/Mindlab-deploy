@@ -1,4 +1,0 @@
-resources:
-  - service-nest.yaml
-  - service-react.yaml
-  - ingress.yaml

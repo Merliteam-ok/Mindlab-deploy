@@ -1,4 +1,0 @@
-resources:
-  - ../../base
-  - deployment-nest.yaml
-  - deployment-react.yaml
