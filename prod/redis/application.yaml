@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Merliteam-ok/Mindlab-deploy.git # Cambia al repo de tu config
     targetRevision: main # O la rama que utilices
-    path: prod/redis/redis-prod.yaml # El archivo de config dentro de tu repo
+    path: prod/redis # El archivo de config dentro de tu repo
   destination:
     server: https://kubernetes.default.svc
     namespace: prod # Namespace en el que se va a desplegar Redis
