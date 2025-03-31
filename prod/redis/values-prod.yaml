@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Merliteam-ok/Mindlab-deploy.git
-    targetRevision: main
-    path: prod/redis
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: redis
+    targetRevision: 17.3.2  # Verifica la última versión disponible del chart
     helm:
       valueFiles:
-        - values-prod.yaml  # Archivo de valores de Helm
+        - values-prod.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: prod
