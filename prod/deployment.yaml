@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chatbot-api
-        image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/my-k8s-cluster:chatbot-api-prod
+        image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:chatbot-api-latest
         ports:
         - containerPort: 3001
       imagePullSecrets:
