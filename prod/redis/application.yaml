@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Merliteam-ok/Mindlab-deploy.git # Cambia al repo de tu config
+    targetRevision: main # O la rama que utilices
+    path: prod/redis/redis-prod.yaml # El archivo de config dentro de tu repo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod # Namespace en el que se va a desplegar Redis
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

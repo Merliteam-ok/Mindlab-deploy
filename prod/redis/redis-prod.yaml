@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+
+---
+
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: redis
+  namespace: prod
+spec:
+  chart: redis
+  repo: https://charts.bitnami.com/bitnami
+  targetNamespace: prod
+  valuesContent: |-
+    architecture: standalone
+    auth:
+      enabled: false
+    master:
+      persistence:
+        enabled: true
+        storageClass: gp2
+        size: 1Gi
