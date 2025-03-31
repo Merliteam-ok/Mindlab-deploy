@@ -11,7 +11,7 @@ spec:
     targetRevision: 17.3.2  # Verifica la última versión disponible del chart
     helm:
       valueFiles:
-        - values-prod.yaml
+        - prod/redis/values-prod.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: prod
