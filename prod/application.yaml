@@ -16,3 +16,11 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  ignoreDifferences:
+    - group: ""
+      kind: Service
+      name: my-app-service
+      namespace: prod
+      jsonPointers:
+        - /spec/ports
+        - /spec/clusterIP
