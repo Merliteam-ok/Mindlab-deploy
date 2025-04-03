@@ -24,3 +24,4 @@ spec:
       jsonPointers:
         - /spec/ports
         - /spec/clusterIP
+        
