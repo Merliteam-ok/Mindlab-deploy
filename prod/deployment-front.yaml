@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: mi-react-app
-        vers: "1"
+        vers: "2"
     spec:
       containers:
         - name: frontend
