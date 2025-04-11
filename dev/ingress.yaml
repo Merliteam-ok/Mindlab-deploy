@@ -24,10 +24,10 @@ metadata:
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
     alb.ingress.kubernetes.io/certificate-arn.landing-fe: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
 
-    alb.ingress.kubernetes.io/actions.landing-be-svc:
+    alb.ingress.kubernetes.io/actions.landing-be:
       >
-      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-be", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.landing-be-svc: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-be-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
+    alb.ingress.kubernetes.io/certificate-arn.landing-be: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
 
 spec:
   rules:
@@ -49,7 +49,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: api-ssl
+                name: chatbot-be
                 port:
                   name: use-annotation
 
@@ -60,7 +60,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: api-ssl
+                name: landing-fe
                 port:
                   name: use-annotation
 
@@ -71,6 +71,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: api-ssl
+                name: landing-be
                 port:
                   name: use-annotation
