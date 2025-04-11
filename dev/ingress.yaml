@@ -11,7 +11,7 @@ metadata:
 
     alb.ingress.kubernetes.io/actions.chatbot-fe:
       >
-      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "chatbot-fe-svc, "ServicePort": 80}]}, "AuthenticationConfig": null}
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "chatbot-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
     alb.ingress.kubernetes.io/certificate-arn.chatbot-fe: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
 
     alb.ingress.kubernetes.io/actions.chatbot-be:
