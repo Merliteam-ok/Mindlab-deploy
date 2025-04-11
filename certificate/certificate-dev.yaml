@@ -1,19 +1,19 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: mindlab-dev-cert
-  namespace: dev
-  annotations:
-    acme.cert-manager.io/http01-edit-in-place: "true"
-    acme.cert-manager.io/http01-ingress-class: "alb"
-spec:
-  secretName: mindlab-dev-tls
-  issuerRef:
-    name: letsencrypt-dev
-    kind: ClusterIssuer
-  commonName: app.dev.app.mind-lab.ai
-  dnsNames:
-    - app.dev.app.mind-lab.ai
-    - api.dev.app.mind-lab.ai
-    - landing.dev.app.mind-lab.ai
-    - strapi.dev.app.mind-lab.ai #forcev3
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: mindlab-dev-cert
+#   namespace: dev
+#   annotations:
+#     acme.cert-manager.io/http01-edit-in-place: "true"
+#     acme.cert-manager.io/http01-ingress-class: "alb"
+# spec:
+#   secretName: mindlab-dev-tls
+#   issuerRef:
+#     name: letsencrypt-dev
+#     kind: ClusterIssuer
+#   commonName: app.dev.app.mind-lab.ai
+#   dnsNames:
+#     - app.dev.app.mind-lab.ai
+#     - api.dev.app.mind-lab.ai
+#     - landing.dev.app.mind-lab.ai
+#     - strapi.dev.app.mind-lab.ai #forcev3
