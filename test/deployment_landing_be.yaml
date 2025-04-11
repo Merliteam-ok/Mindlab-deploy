@@ -70,13 +70,13 @@ spec:
               value: strapi
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
-          volumeMounts:
-            - name: db-storage
-              mountPath: /var/lib/postgresql/data/pgdata
-      volumes:
-        - name: db-storage
-          persistentVolumeClaim:
-            claimName: landing-db-pvc-test
+      #     volumeMounts:
+      #       - name: db-storage
+      #         mountPath: /var/lib/postgresql/data/pgdata
+      # volumes:
+      #   - name: db-storage
+      #     persistentVolumeClaim:
+      #       claimName: landing-db-pvc-test
 ---
 apiVersion: v1
 kind: Service
