@@ -1,19 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mindlab-apps-dev
-  namespace: argocd
+  name: cluster-issuer
+  namespace: cert-manager
 spec:
-  project: mindlab
+  project: default
   source:
     repoURL: 'https://github.com/Merliteam-ok/Mindlab-deploy.git'
-    targetRevision: main
-    path: dev
+    targetRevision: HEAD
+    path: certificate
   destination:
     server: https://kubernetes.default.svc
-    namespace: dev
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-        
+    syncOptions:
+      - CreateNamespace=true

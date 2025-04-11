@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot-fe
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatbot-fe
+  template:
+    metadata:
+      labels:
+        app: chatbot-fe
+        vers: "1"
+    spec:
+      containers:
+        - name: frontend
+          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-dev:chatbot-fe-latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: ecr-secret

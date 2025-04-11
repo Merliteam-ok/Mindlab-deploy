@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: landing-be
+  namespace: dev
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: landing-be
+  template:
+    metadata:
+      labels:
+        app: landing-be
+        vers: "1"
+    spec:
+      containers:
+        - name: landing-be
+          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-dev:landing-page-be-latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 1337
+          env:
+            - name: DATABASE_CLIENT
+              value: postgres
+            - name: DATABASE_HOST
+              value: landing-db
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: strapi
+            - name: DATABASE_USERNAME
+              value: strapi
+            - name: DATABASE_PASSWORD
+              value: strapi
+            - name: API_TOKEN_SALT
+              value: "hBhw3RnCMN93LcmKOG45sA=="
+            - name: JWT_SECRET
+              value: "hhw312ssTFQWS3LcXPIOVosai4ASDD1"
+      imagePullSecrets:
+        - name: ecr-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: landing-db
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: landing-db
+  template:
+    metadata:
+      labels:
+        app: landing-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: strapi
+            - name: POSTGRES_USER
+              value: strapi
+            - name: POSTGRES_PASSWORD
+              value: strapi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: landing-db
+  namespace: dev
+spec:
+  selector:
+    app: landing-db
+  ports:
+    - port: 5432
+      targetPort: 5432

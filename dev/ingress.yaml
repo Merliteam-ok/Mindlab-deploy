@@ -1,0 +1,76 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mindlab-dev
+  namespace: dev
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+
+    alb.ingress.kubernetes.io/actions.chatbot-fe:
+      >
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "chatbot-fe-svc, "ServicePort": 80}]}, "AuthenticationConfig": null}
+    alb.ingress.kubernetes.io/certificate-arn.chatbot-fe: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+
+    alb.ingress.kubernetes.io/actions.chatbot-be:
+      >
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "chatbot-be-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
+    alb.ingress.kubernetes.io/certificate-arn.chatbot-be: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+
+    alb.ingress.kubernetes.io/actions.landing-fe:
+      >
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
+    alb.ingress.kubernetes.io/certificate-arn.landing-fe: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+
+    alb.ingress.kubernetes.io/actions.landing-be-svc:
+      >
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-be", "ServicePort": 80}]}, "AuthenticationConfig": null}
+    alb.ingress.kubernetes.io/certificate-arn.landing-be-svc: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+
+spec:
+  rules:
+    - host: app.dev.app.mind-lab.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chatbot-fe
+                port:
+                  name: use-annotation
+
+    - host: api.dev.app.mind-lab.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-ssl
+                port:
+                  name: use-annotation
+
+    - host: landing.dev.app.mind-lab.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-ssl
+                port:
+                  name: use-annotation
+
+    - host: strapi.dev.app.mind-lab.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-ssl
+                port:
+                  name: use-annotation
