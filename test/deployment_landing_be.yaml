@@ -68,9 +68,11 @@ spec:
               value: strapi
             - name: POSTGRES_PASSWORD
               value: strapi
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: db-storage
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql/data/pgdata
       volumes:
         - name: db-storage
           persistentVolumeClaim:
