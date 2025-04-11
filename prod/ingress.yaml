@@ -54,7 +54,7 @@ spec:
                 port:
                   name: use-annotation
 
-    - host: landing.prod.app.mind-lab.ai
+    - host: landing.prod.app.mind-lab.ai #force
       http:
         paths:
           - path: /
@@ -65,7 +65,7 @@ spec:
                 port:
                   name: use-annotation
 
-    - host: strapi.prod.app.mind-lab.ai
+    - host: strapi.prod.app.mind-lab.ai #force
       http:
         paths:
           - path: /
