@@ -20,15 +20,15 @@ metadata:
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "my-app-service", "ServicePort": 80}]}, "AuthenticationConfig": null}
     alb.ingress.kubernetes.io/certificate-arn.api-ssl: arn:aws:acm:us-east-2:026090511617:certificate/ce488561-522d-472d-a502-36776a2a5ed4
 
-    alb.ingress.kubernetes.io/actions.landing-fe:
+    alb.ingress.kubernetes.io/actions.landing-fe-v2:
       >
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.landing-fe: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
+    alb.ingress.kubernetes.io/certificate-arn.landing-fe-v2: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
 
-    alb.ingress.kubernetes.io/actions.landing-be:
+    alb.ingress.kubernetes.io/actions.landing-be-v2:
       >
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-be-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.landing-be: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
+    alb.ingress.kubernetes.io/certificate-arn.landing-be-v2: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
     
 spec:
   rules:
@@ -61,7 +61,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: landing-fe
+                name: landing-fe-v2
                 port:
                   name: use-annotation
 
@@ -72,6 +72,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: landing-be
+                name: landing-be-v2
                 port:
                   name: use-annotation
