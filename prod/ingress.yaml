@@ -8,17 +8,14 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/success-codes: '200,101'
+    
     # 🔐 Certificados por subdominio
     alb.ingress.kubernetes.io/actions.react-ssl:
       >
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "mi-react-app", "ServicePort": 80}]}, "AuthenticationConfig": null}
     alb.ingress.kubernetes.io/certificate-arn.react-ssl: arn:aws:acm:us-east-2:026090511617:certificate/a6d6fb50-ad3f-4eb4-9e39-dd2185f9d2a7
-
-    alb.ingress.kubernetes.io/actions.api-ssl:
-      >
-      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "my-app-service", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.api-ssl: arn:aws:acm:us-east-2:026090511617:certificate/ce488561-522d-472d-a502-36776a2a5ed4
 
     alb.ingress.kubernetes.io/actions.landing-fe-v2:
       >
@@ -45,17 +42,6 @@ spec:
             backend:
               service:
                 name: react-ssl
-                port:
-                  name: use-annotation
-
-    - host: api.app.mind-lab.ai
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: api-ssl
                 port:
                   name: use-annotation
 
