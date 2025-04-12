@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
       - name: chatbot-api
-        image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:chatbot-api-latest
+        # image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:chatbot-api-latest
+        image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab/ai-agents-manager/admin-api:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3001
