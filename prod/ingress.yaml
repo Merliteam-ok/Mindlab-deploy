@@ -25,11 +25,16 @@ metadata:
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
     alb.ingress.kubernetes.io/certificate-arn.landing-fe-v2: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
 
+    alb.ingress.kubernetes.io/actions.landing-be-v1:
+      >
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-be-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
+    alb.ingress.kubernetes.io/certificate-arn.landing-be-v1: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
+    
     alb.ingress.kubernetes.io/actions.landing-be-v2:
       >
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-be-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.landing-be-v2: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
-    
+    alb.ingress.kubernetes.io/certificate-arn.landing-be-v2: arn:aws:acm:us-east-2:026090511617:certificate/549ef233-a8e6-4437-8a10-0e9bf510ea71
+
 spec:
   rules:
     - host: app.mind-lab.ai
@@ -54,7 +59,7 @@ spec:
                 port:
                   name: use-annotation
 
-    - host: landing.prod.app.mind-lab.ai #forcev2
+    - host: landing.prod.app.mind-lab.ai
       http:
         paths:
           - path: /
@@ -65,7 +70,18 @@ spec:
                 port:
                   name: use-annotation
 
-    - host: strapi.prod.app.mind-lab.ai #forcev2
+    - host: strapi.prod.app.mind-lab.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: landing-be-v1
+                port:
+                  name: use-annotation
+
+    - host: strapi.mind-lab.ai
       http:
         paths:
           - path: /
@@ -75,3 +91,5 @@ spec:
                 name: landing-be-v2
                 port:
                   name: use-annotation
+
+                  
