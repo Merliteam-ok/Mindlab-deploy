@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: landing-be
-  namespace: dev
+  namespace: prod
 spec:
-  replicas: 1
   revisionHistoryLimit: 0
+  replicas: 1
   selector:
     matchLabels:
       app: landing-be
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: landing-be
-          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-dev:landing-page-be-latest
+          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:landing-page-be-latest
           imagePullPolicy: Always
           ports:
             - containerPort: 1337
@@ -45,7 +45,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: landing-db
-  namespace: dev
+  namespace: prod
 spec:
   replicas: 1
   revisionHistoryLimit: 0
@@ -70,21 +70,20 @@ spec:
             - name: POSTGRES_PASSWORD
               value: strapi
             - name: PGDATA
-              # value: /var/lib/postgresql/data/pgdata
-              value: /var/lib/postgresql/data/pgdata/data
-          volumeMounts:
-            - name: db-storage
-              mountPath: /var/lib/postgresql/data/pgdata
-      volumes:
-        - name: db-storage
-          persistentVolumeClaim:
-            claimName: landing-db-pvc-dev
+              value: /var/lib/postgresql/data/pgdata
+      #     volumeMounts:
+      #       - name: db-storage
+      #         mountPath: /var/lib/postgresql/data/pgdata
+      # volumes:
+      #   - name: db-storage
+      #     persistentVolumeClaim:
+      #       claimName: landing-db-pvc-test
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: landing-db
-  namespace: dev
+  namespace: prod
 spec:
   selector:
     app: landing-db
@@ -92,16 +91,16 @@ spec:
     - port: 5432
       targetPort: 5432
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: landing-db-pvc-dev
-  namespace: dev
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
-  storageClassName: gp2
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: landing-db-pvc-test
+#   namespace: dev
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 25Gi
+#   storageClassName: gp2

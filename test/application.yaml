@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app-prod
+  name: mindlab-apps-test
   namespace: argocd
 spec:
-  project: default
+  project: mindlab
   source:
     repoURL: 'https://github.com/Merliteam-ok/Mindlab-deploy.git'
     targetRevision: main
-    path: prod
+    path: test
   destination:
     server: https://kubernetes.default.svc
     namespace: test
@@ -16,3 +16,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+        

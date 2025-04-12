@@ -4,7 +4,7 @@ metadata:
   name: mi-react-app
   namespace: prod
 spec:
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 0
   replicas: 2
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: mi-react-app
-        vers: "3"
+        vers: "5"
     spec:
       containers:
         - name: frontend

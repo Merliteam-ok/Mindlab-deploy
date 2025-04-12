@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: landing-fe
-  namespace: dev
+  namespace: prod
 spec:
   revisionHistoryLimit: 0
   replicas: 1
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: landing-fe
-        image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-dev:landing-page-fe-latest
+        image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:landing-page-fe-latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

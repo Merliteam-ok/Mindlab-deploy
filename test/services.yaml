@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: chatbot-be-svc
-  namespace: dev
+  namespace: test
 spec:
   selector:
     app: chatbot-be
@@ -16,7 +16,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: chatbot-fe-svc
-  namespace: dev
+  namespace: test
 spec:
   selector:
     app: chatbot-fe
@@ -30,7 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: landing-fe-svc
-  namespace: dev
+  namespace: test
 spec:
   selector:
     app: landing-fe
@@ -44,7 +44,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: landing-be-svc
-  namespace: dev
+  namespace: test
 spec:
   selector:
     app: landing-be
@@ -58,7 +58,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis
-  namespace: dev
+  namespace: test
 spec:
   selector:
     app: redis
@@ -66,3 +66,4 @@ spec:
     - protocol: TCP
       port: 6379
       targetPort: 6379
+

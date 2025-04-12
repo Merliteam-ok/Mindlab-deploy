@@ -11,3 +11,31 @@ spec:
       port: 80 # El puerto en el que se expone el servicio
       targetPort: 3001 # El puerto donde tu aplicación escucha dentro del pod
   type: LoadBalancer # Para exponer el servicio externamente (AWS crea un ELB automáticamente)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: landing-fe-svc
+  namespace: prod
+spec:
+  selector:
+    app: landing-fe
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: landing-be-svc
+  namespace: prod
+spec:
+  selector:
+    app: landing-be
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 1337
+  type: ClusterIP
