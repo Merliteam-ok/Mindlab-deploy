@@ -17,11 +17,6 @@ metadata:
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "mi-react-app", "ServicePort": 80}]}, "AuthenticationConfig": null}
     alb.ingress.kubernetes.io/certificate-arn.react-ssl: arn:aws:acm:us-east-2:026090511617:certificate/a6d6fb50-ad3f-4eb4-9e39-dd2185f9d2a7
 
-    alb.ingress.kubernetes.io/actions.landing-fe-v1:
-      >
-      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.landing-fe-v1: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
-
     alb.ingress.kubernetes.io/actions.landing-fe-v2:
       >
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
@@ -39,16 +34,6 @@ metadata:
 
 spec:
   rules:
-    - host: mind-lab.ai
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: landing-fe-v1
-                port:
-                  name: use-annotation
     - host: app.mind-lab.ai
       http:
         paths:
