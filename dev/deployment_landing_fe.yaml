@@ -21,5 +21,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_STRAPI_API_TOKEN
+          value: "d2bbac0c4610a2998a0ca29792a883e8c8852edf8d022b3cb2be3813be07f35bdf5be3fd3224bb8be111ac6536af5dc59e0b9be370c5fb13e56928655e7ee37f94521f5ddf95161a9368143559520940d018810e94a0915f768ae7342757144d066a53f73ff4a49cd0fe6e6f02f139cca2d54bdda57d6663579728f2fe01dc2e"
       imagePullSecrets:
       - name: ecr-secret

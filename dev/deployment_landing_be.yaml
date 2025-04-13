@@ -35,7 +35,13 @@ spec:
             - name: DATABASE_PASSWORD
               value: strapi
             - name: API_TOKEN_SALT
-              value: "hBhw3RnCMN93LcmKOG45sA=="
+              value: "+GGWitI13NL3ESYrB/9Uyg=="
+            - name: APP_KEYS
+              value: "7bHLyiAjLI4bkfPynOSUFQ==,4m0Y+raS6QL7QM5tgs/wbQ==,3HNNW4tSlEl0AMduVBLjCQ==,ATssl3BwcOo3h15e4lbgCg=="
+            - name: ADMIN_JWT_SECRET
+              value: "Twox/3kdTook21WUtO0odQ=="
+            - name: TRANSFER_TOKEN_SALT
+              value: "+GGWitI13NL3ESYrB/9Uyg=="
             - name: JWT_SECRET
               value: "hhw312ssTFQWS3LcXPIOVosai4ASDD1"
       imagePullSecrets:
