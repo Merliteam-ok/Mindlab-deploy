@@ -20,7 +20,7 @@ metadata:
     alb.ingress.kubernetes.io/actions.landing-fe-v1:
       >
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.landing-fe-v1: arn:aws:acm:us-east-2:026090511617:certificate/249f9aa4-e369-49aa-84a6-7203da1e5a65
+    alb.ingress.kubernetes.io/certificate-arn.landing-fe-v1: arn:aws:acm:us-east-2:026090511617:certificate/22c9679e-20ae-4b01-b58c-019df206db86
 
     alb.ingress.kubernetes.io/actions.landing-fe-v2:
       >
@@ -39,17 +39,6 @@ metadata:
 
 spec:
   rules:
-    - host: app.mind-lab.ai
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: react-ssl
-                port:
-                  name: use-annotation
-
     - host: mind-lab.ai
       http:
         paths:
@@ -60,7 +49,16 @@ spec:
                 name: landing-fe-v1
                 port:
                   name: use-annotation
-
+    - host: app.mind-lab.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: react-ssl
+                port:
+                  name: use-annotation
     - host: landing.prod.app.mind-lab.ai
       http:
         paths:
@@ -71,7 +69,6 @@ spec:
                 name: landing-fe-v2
                 port:
                   name: use-annotation
-
     - host: strapi.prod.app.mind-lab.ai
       http:
         paths:
@@ -82,7 +79,6 @@ spec:
                 name: landing-be-v1
                 port:
                   name: use-annotation
-
     - host: strapi.mind-lab.ai
       http:
         paths:
