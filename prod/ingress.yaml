@@ -9,7 +9,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/backend-protocol: HTTP
-    alb.ingress.kubernetes.io/success-codes: '200,101'
+    alb.ingress.kubernetes.io/success-codes: '200'
     
     # 🔐 Certificados por subdominio
     alb.ingress.kubernetes.io/actions.react-ssl:
