@@ -20,7 +20,7 @@ metadata:
     alb.ingress.kubernetes.io/actions.landing-fe-v1:
       >
       {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "landing-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.landing-fe-v1: arn:aws:acm:us-east-2:026090511617:certificate/12c83431-9ce2-496b-b515-eaf6e0844f37
+    alb.ingress.kubernetes.io/certificate-arn.landing-fe-v1: arn:aws:acm:us-east-2:026090511617:certificate/249f9aa4-e369-49aa-84a6-7203da1e5a65
 
     alb.ingress.kubernetes.io/actions.landing-fe-v2:
       >
