@@ -78,14 +78,15 @@ spec:
             - name: POSTGRES_PASSWORD
               value: strapi
             - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
-      #     volumeMounts:
-      #       - name: db-storage
-      #         mountPath: /var/lib/postgresql/data/pgdata
-      # volumes:
-      #   - name: db-storage
-      #     persistentVolumeClaim:
-      #       claimName: landing-db-pvc-test
+              # value: /var/lib/postgresql/data/pgdata
+              value: /var/lib/postgresql/data/pgdata/data
+          volumeMounts:
+            - name: db-storage
+              mountPath: /var/lib/postgresql/data/pgdata
+      volumes:
+        - name: db-storage
+          persistentVolumeClaim:
+            claimName: landing-db-pvc-prod
 ---
 apiVersion: v1
 kind: Service
@@ -98,17 +99,16 @@ spec:
   ports:
     - port: 5432
       targetPort: 5432
-
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: landing-db-pvc-test
-#   namespace: dev
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 25Gi
-#   storageClassName: gp2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: landing-db-pvc-prod
+  namespace: prod
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: gp2
