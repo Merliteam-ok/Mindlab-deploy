@@ -1,31 +1,31 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: api-app-ingress
-  namespace: prod
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/backend-protocol: HTTP
-    alb.ingress.kubernetes.io/success-codes: '200'
-    alb.ingress.kubernetes.io/healthcheck-path: /v1
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:026090511617:certificate/ce488561-522d-472d-a502-36776a2a5ed4
-    # Sticky sessions para el grupo de destino (sin el idle_timeout) - fix web socket error
-    alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=86400
-    # El idle_timeout va aquí, en los atributos del load balancer
-    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=3600,routing.http.drop_invalid_header_fields.enabled=true
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: api-app-ingress
+#   namespace: prod
+#   annotations:
+#     kubernetes.io/ingress.class: alb
+#     alb.ingress.kubernetes.io/target-type: ip
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+#     alb.ingress.kubernetes.io/backend-protocol: HTTP
+#     alb.ingress.kubernetes.io/success-codes: '200'
+#     alb.ingress.kubernetes.io/healthcheck-path: /v1
+#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:026090511617:certificate/ce488561-522d-472d-a502-36776a2a5ed4
+#     # Sticky sessions para el grupo de destino (sin el idle_timeout) - fix web socket error
+#     alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=86400
+#     # El idle_timeout va aquí, en los atributos del load balancer
+#     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=3600,routing.http.drop_invalid_header_fields.enabled=true
 
 
-spec:
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: my-app-service
-                port:
-                  number: 80
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: my-app-service
+#                 port:
+#                   number: 80
