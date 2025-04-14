@@ -21,8 +21,8 @@ spec:
         image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:chatbot-api-latest
         # image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab/ai-agents-manager/admin-api:latest
         imagePullPolicy: Always
-        # ports:
-        # - containerPort: 3001
+        ports:
+        - containerPort: 3001
         env:
         - name: REDIS_HOST
           value: "clustercfg.redis-cache-prod.qa9onv.use2.cache.amazonaws.com"
