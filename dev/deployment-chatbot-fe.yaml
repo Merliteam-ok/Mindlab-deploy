@@ -19,6 +19,9 @@ spec:
         - name: frontend
           image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-dev:chatbot-fe-latest
           imagePullPolicy: Always
+          env:
+          - name: VITE_API_URL
+            value: "https://api.dev.app.mind-lab.ai"
           ports:
             - containerPort: 80
       imagePullSecrets:
