@@ -21,7 +21,7 @@ spec:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
         - name: REDIS_PASSWORD
-          value: "x82n7t[F~]'k6NU|%0JQ"
+          value: "merliteam2024"
         ports:
         - containerPort: 6379
 ---
