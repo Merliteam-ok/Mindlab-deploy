@@ -23,6 +23,6 @@ spec:
           - name: VITE_API_URL
             value: "https://api.dev.app.mind-lab.ai"
           ports:
-            - containerPort: 80
+            - containerPort: 3005
       imagePullSecrets:
         - name: ecr-secret

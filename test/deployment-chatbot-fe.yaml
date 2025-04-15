@@ -20,6 +20,6 @@ spec:
           image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-test:chatbot-fe-latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 3005
       imagePullSecrets:
         - name: ecr-secret
