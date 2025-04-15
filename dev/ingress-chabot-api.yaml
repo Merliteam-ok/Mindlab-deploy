@@ -38,7 +38,7 @@ spec:
               service:
                 name: chatbot-be
                 port:
-                  name: chatbot-be
+                  name: use-annotation
 
           - path: /
             pathType: Prefix
@@ -46,4 +46,4 @@ spec:
               service:
                 name: chatbot-be
                 port:
-                  name: chatbot-be
+                  name: use-annotation
