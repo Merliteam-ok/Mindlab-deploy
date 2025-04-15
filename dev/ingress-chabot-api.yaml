@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mindlab-dev
+  namespace: dev
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/success-codes: '200,101'
+
+    alb.ingress.kubernetes.io/actions.chatbot-be: >
+      {
+        "Type": "forward",
+        "ForwardConfig": {
+          "TargetGroups": [
+            {
+              "ServiceName": "chatbot-be-svc",
+              "ServicePort": 80
+            }
+          ]
+        }
+      }
+
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+    alb.ingress.kubernetes.io/target-group-attributes.chatbot-be: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=86400
+
+spec:
+  rules:
+    - host: api.dev.app.mind-lab.ai
+      http:
+        paths:
+          - path: /socket.io/
+            pathType: Prefix
+            backend:
+              service:
+                name: chatbot-be
+                port:
+                  name: chatbot-be
+
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chatbot-be
+                port:
+                  name: chatbot-be
