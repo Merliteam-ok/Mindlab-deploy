@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:frontend-latest
+          image: 026090511617.dkr.ecr.us-east-2.amazonaws.com/mindlab-prod:chatbot-fe-latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
