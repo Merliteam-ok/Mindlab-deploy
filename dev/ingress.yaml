@@ -10,11 +10,11 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/success-codes: '200'
-
-    alb.ingress.kubernetes.io/actions.chatbot-fe:
-      >
-      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "chatbot-fe-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
-    alb.ingress.kubernetes.io/certificate-arn.chatbot-fe: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+    
+    alb.ingress.kubernetes.io/actions.chatbot-be: >
+      {"Type": "forward", "ForwardConfig": {"TargetGroups": [{"ServiceName": "chatbot-be-svc", "ServicePort": 80}]}, "AuthenticationConfig": null}
+    alb.ingress.kubernetes.io/certificate-arn.chatbot-be: arn:aws:acm:us-east-2:026090511617:certificate/a8a154f0-2940-49bb-a820-a35c5c1e8997
+    alb.ingress.kubernetes.io/target-group-attributes.chatbot-be: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=86400
 
     alb.ingress.kubernetes.io/actions.chatbot-be:
       >
