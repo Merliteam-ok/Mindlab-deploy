@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: landing-fe
-        vers: "20"
+        vers: "21"
     spec:
       containers:
       - name: landing-fe
