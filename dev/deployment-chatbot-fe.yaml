@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: chatbot-fe
-        vers: "60"
+        vers: "61"
     spec:
       containers:
         - name: frontend
