@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: mi-react-app
-        vers: "20"
+        vers: "21"
     spec:
       containers:
         - name: frontend
