@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: chatbot-be
-        vers: "90"
+        vers: "91"
     spec:
       containers:
       - name: chatbot-be
